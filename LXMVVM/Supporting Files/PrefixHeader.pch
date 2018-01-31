@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  LXMVVM
+//
+//  Created by 王明哲 on 15/11/3.
+//  Copyright © 2015年 王明哲. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "LX_Headers.h"
+#import "LX_Constant.h"
+
+#endif
