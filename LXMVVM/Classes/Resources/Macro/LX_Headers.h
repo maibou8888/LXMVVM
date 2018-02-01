@@ -12,7 +12,6 @@
 #import "LXBusConnectorPrt.h"
 #import "LXBusMediator.h"
 
-#import <ReactiveViewModel/ReactiveViewModel.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <AFHTTPSessionManager+RACSupport.h>
 #import <MBProgressHUD.h>

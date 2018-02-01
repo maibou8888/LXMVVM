@@ -1,7 +1,6 @@
 target 'LXMVVM' do
 
-pod 'ReactiveCocoa'
-pod 'ReactiveViewModel'
+pod 'ReactiveCocoa', :git => 'https://github.com/zhao0/ReactiveCocoa.git', :tag => '2.5.2'
 pod 'Mantle'
 pod 'MBProgressHUD', '~> 0.9'
 pod 'AFNetworking-RACExtensions'
