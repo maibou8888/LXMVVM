@@ -26,8 +26,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     //settings
-    [self adapt_iOS11];
     [self configureAppearance];
+    [self configureHighVersion];
     [self.services resetRootViewModel:[self createInitialViewModel]];
     
     [self.window makeKeyAndVisible];
@@ -49,7 +49,7 @@
                                                          NSForegroundColorAttributeName:[UIColor whiteColor]};
 }
 
-- (void)adapt_iOS11 {
+- (void)configureHighVersion {
     if (@available(iOS 11.0, *)){
         [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
     }

@@ -28,38 +28,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UINavigationController *firstNavigationController = ({
-        LXViewController *firstVC = [LXBusMediator viewControllerForURL:[NSURL URLWithString:@"productScheme://AA"]];
-        firstVC.title = @"页面1";
-        UIImage *itemImage = [UIImage imageNamed:@"home_s.png"];
-        firstVC.tabBarItem  = [[UITabBarItem alloc] initWithTitle:@"页面1" image:itemImage tag:1];
-        
-        [[UINavigationController alloc] initWithRootViewController:firstVC];
-    });
+    NSMutableArray *viewControllers = [NSMutableArray array];
+    LXViewController *firstVC  = [LXBusMediator viewControllerForURL:[NSURL URLWithString:@"productScheme://AA"]];
+    LXViewController *secondVC = [LXBusMediator viewControllerForURL:[NSURL URLWithString:@"productScheme://BB"]];
+    LXViewController *thirdVC  = [LXBusMediator viewControllerForURL:[NSURL URLWithString:@"productScheme://CC"]];
     
-    UINavigationController *secondNavigationController = ({
-        LXViewController *secondVC = [LXBusMediator viewControllerForURL:[NSURL URLWithString:@"productScheme://BB"]];
+    if (firstVC) {
+        UINavigationController *firstNavigationController = ({
+            firstVC.title = @"页面1";
+            UIImage *itemImage = [UIImage imageNamed:@"home_s.png"];
+            firstVC.tabBarItem  = [[UITabBarItem alloc] initWithTitle:@"页面1" image:itemImage tag:1];
+            [[UINavigationController alloc] initWithRootViewController:firstVC];
+        });
         
-        secondVC.title = @"页面2";
-        UIImage *itemImage = [UIImage imageNamed:@"money_s.png"];
-        secondVC.tabBarItem  = [[UITabBarItem alloc] initWithTitle:@"页面2" image:itemImage tag:2];
-        
-        [[UINavigationController alloc] initWithRootViewController:secondVC];
-    });
-
+        [viewControllers addObject:firstNavigationController];
+    }
     
-    UINavigationController *thirdNavigationController = ({
-        LXViewController *thirdVC = [LXBusMediator viewControllerForURL:[NSURL URLWithString:@"productScheme://CC"]];
+    if (secondVC) {
+        UINavigationController *secondNavigationController = ({
+            secondVC.title = @"页面2";
+            UIImage *itemImage = [UIImage imageNamed:@"money_s.png"];
+            secondVC.tabBarItem  = [[UITabBarItem alloc] initWithTitle:@"页面2" image:itemImage tag:2];
+            [[UINavigationController alloc] initWithRootViewController:secondVC];
+        });
         
-        thirdVC.title = @"页面3";
-        UIImage *itemImage = [UIImage imageNamed:@"mine_s.png"];
-        thirdVC.tabBarItem  = [[UITabBarItem alloc] initWithTitle:@"页面3" image:itemImage tag:3];
+        [viewControllers addObject:secondNavigationController];
+    }
+    
+    if (thirdVC) {
+        UINavigationController *thirdNavigationController = ({
+            thirdVC.title = @"页面3";
+            UIImage *itemImage = [UIImage imageNamed:@"mine_s.png"];
+            thirdVC.tabBarItem  = [[UITabBarItem alloc] initWithTitle:@"页面3" image:itemImage tag:3];
+            [[UINavigationController alloc] initWithRootViewController:thirdVC];
+        });
         
-        [[UINavigationController alloc] initWithRootViewController:thirdVC];
-    });
+        [viewControllers addObject:thirdNavigationController];
+    }
 
-    self.tabBarController.viewControllers = @[firstNavigationController, secondNavigationController,thirdNavigationController];
-    [LXDelegate.navigationControllerStack pushNavigationController:firstNavigationController];
+    self.tabBarController.viewControllers = viewControllers;
+    [LXDelegate.navigationControllerStack pushNavigationController:viewControllers.firstObject];
     
     [[self
       rac_signalForSelector:@selector(tabBarController:didSelectViewController:)
